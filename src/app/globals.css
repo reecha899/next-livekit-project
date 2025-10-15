@@ -1,0 +1,126 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+@import "tailwindcss";
+
+@layer base {
+  
+  body {
+    @apply bg-gradient-to-br from-slate-50 to-blue-50 font-sans antialiased;
+    font-family: 'Inter', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-blue-600 hover:bg-blue-700 text-white font-medium px-4 sm:px-6 py-2 sm:py-3 rounded-lg transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 active:translate-y-0 text-sm sm:text-base;
+  }
+  
+  .btn-secondary {
+    @apply bg-white hover:bg-gray-50 text-gray-700 font-medium px-4 sm:px-6 py-2 sm:py-3 rounded-lg border border-gray-300 transition-all duration-200 shadow-sm hover:shadow-md text-sm sm:text-base;
+  }
+  
+  .btn-danger {
+    @apply bg-red-600 hover:bg-red-700 text-white font-medium px-3 sm:px-4 py-2 rounded-lg transition-all duration-200 shadow-lg hover:shadow-xl text-sm sm:text-base;
+  }
+  
+  .input-field {
+    @apply w-full px-3 sm:px-4 py-2 sm:py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-200 bg-white shadow-sm text-sm sm:text-base;
+  }
+  
+  .card {
+    @apply bg-white rounded-xl shadow-lg border border-gray-100 p-4 sm:p-6;
+  }
+  
+  .gradient-bg {
+    @apply bg-gradient-to-br from-blue-600 via-blue-700 to-blue-800;
+  }
+  
+  /* removed glass-effect utility to avoid unknown utility errors */
+  
+  .video-grid {
+    @apply grid gap-2 sm:gap-4;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  }
+  
+  @media (max-width: 640px) {
+    .video-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+  
+  .video-tile {
+    @apply relative bg-gray-900 rounded-lg overflow-hidden aspect-video;
+  }
+  
+  .control-button {
+    @apply flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 rounded-full transition-all duration-200 shadow-lg hover:shadow-xl;
+  }
+  
+  .control-button.active {
+    @apply bg-white text-blue-600;
+  }
+  
+  .control-button.inactive {
+    @apply bg-red-600 text-white hover:bg-red-700;
+  }
+  
+  /* Mobile-specific styles */
+  .mobile-header {
+    @apply flex flex-col sm:flex-row items-start sm:items-center justify-between space-y-2 sm:space-y-0;
+  }
+  
+  .mobile-controls {
+    @apply fixed bottom-4 left-4 right-4 sm:bottom-6 sm:left-1/2 sm:right-auto sm:transform sm:-translate-x-1/2;
+  }
+  
+  .mobile-settings {
+    @apply fixed inset-0 bg-gray-900 z-50 overflow-y-auto;
+  }
+  
+  .mobile-settings-content {
+    @apply p-4 space-y-4;
+  }
+}
+
+@layer utilities {
+  .text-gradient {
+    @apply bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent;
+  }
+
+  /* Fallback custom animation utilities */
+  .animate-fade-in { animation: fadeIn 0.5s ease-in-out both; }
+  .animate-slide-up { animation: slideUp 0.3s ease-out both; }
+  .animate-wiggle { animation: wiggle 0.5s ease-in-out; }
+  .animate-pulse-slow { animation: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite; }
+}
+
+@keyframes fadeIn { from { opacity: 0 } to { opacity: 1 } }
+@keyframes slideUp { from { transform: translateY(10px); opacity: 0 } to { transform: translateY(0); opacity: 1 } }
+@keyframes wiggle { 0%,100% { transform: rotate(-3deg) } 50% { transform: rotate(3deg) } }
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-gray-100;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-gray-400 rounded-full;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-gray-500;
+}
+
+/* Loading spinner */
+.spinner {
+  @apply animate-spin rounded-full h-8 w-8 border-b-2 border-white;
+}
+
+/* Removed LiveKit class overrides to avoid conflicts with default styles */
